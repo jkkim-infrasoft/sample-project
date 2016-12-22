@@ -1,16 +1,12 @@
 package kr.co.infrasoft.sample_project.config;
 
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -55,15 +51,4 @@ public class AppConfig extends WebMvcConfigurationSupport{
         
         return converter;
     }
-	
-	@Bean
-	public static PropertyPlaceholderConfigurer propertyConfigurer(Environment env) throws IOException {
-	    PropertyPlaceholderConfigurer propertyPlaceholderConfigurer = new PropertyPlaceholderConfigurer();
-	    
-	    propertyPlaceholderConfigurer.setLocation(new FileSystemResource(env.getProperty("cops_home") + "/config/config.properties"));
-	    propertyPlaceholderConfigurer.setIgnoreUnresolvablePlaceholders(true);
-
-	    return propertyPlaceholderConfigurer;
-
-	}
 }
